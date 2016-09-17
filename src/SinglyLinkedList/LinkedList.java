@@ -1,51 +1,37 @@
 package SinglyLinkedList;
 
-public class LinkedList<T>{
+/**
+ *
+ * This is a interface that represents de structure of a
+ * Linked List Abstract Data Type.
+ *
+ * Created by alisonmoura on 16/09/16.
+ */
+public interface LinkedList<T> {
 
-    private Node<T> first;
-    private Node<T> last;
+    /**
+     * This method get the value, create a new Node with
+     * this value. And insert this in the start of the list.
+     * @param value
+     */
+    void insertStart(T value);
+    /**
+     * This method get the value, create a new Node with
+     * this value. And insert this in the end of the list.
+     * @param value
+     */
+    void insertEnd(T value);
 
-    public void insertStart(T value){
-        Node<T> newNode = new Node<>(value);
-        if(!isListEmpty())
-            newNode.setNext(first);
-        first = newNode;
-    }
+    /**
+     * This method verifies if the list is empty or not.
+     * @return true: if the list is empty, false: if the
+     * list isn't empty.
+     */
+    boolean isListEmpty();
 
-    public void insertEnd(T value){
-        Node<T> newNode = new Node<>(value);
-        if(!isListEmpty())
-            last.setNext(newNode);
-        else first = newNode;
-        last = newNode;
-    }
+    /**
+     * This method print de list in the console.
+     */
+    void printList();
 
-    public boolean isListEmpty(){
-        return first == null && last == null;
-    }
-
-    public void printList(){
-        Node<T> iterator = first;
-        while(iterator != null){
-            System.out.print(iterator.getValue().toString() + " -> ");
-            iterator = iterator.getNext();
-        }
-        System.out.println("#");
-    }
-
-    public Node<T> getFirst() {
-        return first;
-    }
-
-    public void setFirst(Node<T> first) {
-        this.first = first;
-    }
-
-    public Node<T> getLast() {
-        return last;
-    }
-
-    public void setLast(Node<T> last) {
-        this.last = last;
-    }
 }

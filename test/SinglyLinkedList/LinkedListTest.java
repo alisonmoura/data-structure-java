@@ -9,12 +9,12 @@ public class LinkedListTest {
     }
 
     private static void testIsListEmpty(){
-        LinkedList<Integer> linkedList = new LinkedList<>();
+        DefaultLinkedList<Integer> linkedList = new DefaultLinkedList<>();
         System.out.println(linkedList.isListEmpty() ? "Right" : "Error");
     }
 
     private static void testInsertStart(){
-        LinkedList<Integer> linkedList = new LinkedList<>();
+        DefaultLinkedList<Integer> linkedList = new DefaultLinkedList<>();
         linkedList.insertStart(4);
         linkedList.insertStart(6);
         linkedList.insertStart(8);
@@ -22,7 +22,7 @@ public class LinkedListTest {
     }
 
     private static void testInsertEnd(){
-        LinkedList<Integer> linkedList = new LinkedList<>();
+        DefaultLinkedList<Integer> linkedList = new DefaultLinkedList<>();
         linkedList.insertEnd(4);
         linkedList.insertEnd(6);
         linkedList.insertEnd(8);
