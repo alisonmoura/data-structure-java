@@ -1,4 +1,4 @@
-package SinglyLinkedList;
+package LinkedList;
 
 /**
  *
@@ -15,12 +15,21 @@ public interface LinkedList<T> {
      * @param value
      */
     void insertStart(T value);
+
     /**
      * This method get the value, create a new Node with
      * this value. And insert this in the end of the list.
      * @param value
      */
     void insertEnd(T value);
+
+    /**
+     * This method remove, from the list, the node that have
+     * the value equals given param's value, and return the value
+     * of removed node.
+     * @param value
+     */
+    T remove(T value);
 
     /**
      * This method verifies if the list is empty or not.
