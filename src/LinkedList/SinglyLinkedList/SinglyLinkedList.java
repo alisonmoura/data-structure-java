@@ -2,60 +2,67 @@ package LinkedList.SinglyLinkedList;
 
 import LinkedList.LinkedList;
 
-public class DefaultLinkedList<T> implements LinkedList<T> {
+public class SinglyLinkedList<T> implements LinkedList<T> {
 
     private Node<T> first;
     private Node<T> last;
+    private Integer size = 0;
 
     @Override
     public void insertStart(T value){
-        Node<T> newNode = new Node(value);
-        if(!isListEmpty())
+        Node<T> newNode = new Node<>(value);
+        if(!isEmpty())
             newNode.setNext(first);
         first = newNode;
+        ++size;
     }
 
     @Override
     public void insertEnd(T value){
-        Node<T> newNode = new Node(value);
-        if(!isListEmpty())
+        Node<T> newNode = new Node<>(value);
+        if(!isEmpty())
             last.setNext(newNode);
         else first = newNode;
         last = newNode;
+        ++size;
     }
 
     @Override
     public T remove(T value) {
-        if(isListEmpty())
+        if(isEmpty())
             return null;
         if(first == last && value.equals(first.getValue())){
             T removedValue = first.getValue();
             first = null;
             last = null;
+            --size;
             return removedValue;
         }
         if(value.equals(first.getValue())){
             T removedValue = first.getValue();
             first = first.getNext();
+            --size;
             return removedValue;
         }
         if(value.equals(last.getValue())){
-            Node iterator = first;
+            Node<T> iterator = first;
             while(iterator != last){
                 if(iterator.getNext() == last){
                     T removedValue = last.getValue();
                     last = iterator;
                     last.setNext(null);
+                    --size;
                     return removedValue;
                 }
                 iterator = iterator.getNext();
             }
         }
-        Node iterator = first;
+        Node<T> iterator = first;
         while(iterator != last){
             if(iterator.getNext().getValue().equals(value)){
-                T removedValue = (T) iterator.getNext().getValue();
+                T removedValue = iterator.getNext().getValue();
                 iterator.setNext(iterator.getNext().getNext());
+                --size;
                 return removedValue;
             }
         }
@@ -63,7 +70,23 @@ public class DefaultLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public boolean isListEmpty(){
+    public T find(T value) {
+        Node<T> iterator = first;
+        while(iterator != null){
+            if(iterator.getValue().equals(value))
+                return iterator.getValue();
+            iterator = iterator.getNext();
+        }
+        return null;
+    }
+
+    @Override
+    public Integer size() {
+        return size;
+    }
+
+    @Override
+    public boolean isEmpty(){
         return first == null && last == null;
     }
 
@@ -77,19 +100,11 @@ public class DefaultLinkedList<T> implements LinkedList<T> {
         System.out.println("#");
     }
 
-    public Node<T> getFirst() {
-        return first;
+    public T first(){
+        return first.getValue();
     }
 
-    public void setFirst(Node<T> first) {
-        this.first = first;
-    }
-
-    public Node<T> getLast() {
-        return last;
-    }
-
-    public void setLast(Node<T> last) {
-        this.last = last;
+    public T last(){
+        return last.getValue();
     }
 }
