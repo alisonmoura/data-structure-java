@@ -2,7 +2,7 @@ package LinkedList.SinglyLinkedList;
 
 import LinkedList.LinkedList;
 
-public class TestDefaultLinkedList {
+public class TestSinglyLinkedList {
 
     public static void main(String[] args) {
         testIsListEmpty();
